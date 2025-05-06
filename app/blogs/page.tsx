@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { SiteHeader } from "@/components/site-header"
 import { ScrollToTop } from "@/components/scroll-to-top"
-import { blogArticles } from "@/components/LatestArticlesSection"
+import { structuredBlogArticles } from "@/lib/blog-data"
 
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
@@ -69,13 +69,13 @@ export default function BlogsPage() {
               initial="hidden"
               animate="visible"
             >
-              {blogArticles.map((blog) => (
+              {structuredBlogArticles.map((blog) => (
                 <motion.div key={blog.id} variants={staggerItem}>
                   <Card className="overflow-hidden group h-full transition-all duration-300 hover:shadow-xl border-0 shadow-md">
                     <CardHeader className="p-0">
                       <div className="relative h-48 w-full overflow-hidden">
                         <Image
-                          src={blog.image || "/placeholder.svg"}
+                          src={blog.featuredImage || "/placeholder.svg"}
                           alt={blog.title}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
